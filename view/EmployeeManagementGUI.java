@@ -114,6 +114,10 @@ public class EmployeeManagementGUI {
 		public void actionPerformed(ActionEvent e) {
 			try {
 				String name = employeeName.getText().trim();
+				if(!name.matches("[a-zA-Z\\s]+")) {
+					displayMessage("Error! Double check employee information is correct.");
+					return;
+				}
 				int employeeNumberId = Integer.parseInt(employeeNumber.getText().trim());
 				LocalDate hireDate = LocalDate.parse(employeeHireDate.getText().trim());
 				Employee newEmployee = new Employee(name, hireDate, employeeNumberId, "Employed");
